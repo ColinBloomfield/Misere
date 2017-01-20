@@ -1,0 +1,8 @@
+set terminal pngcairo size 1400,1048 enhanced font 'Verdana,10'
+set output "Misere3D-1-8.png"
+
+
+set key off
+splot 'MisereSeq8.txt' using 1:2:3 with points palette pointsize 3 pointtype 7
+# set key off
+# splot 'MisereSeq.tsv' using 1:2:3 with points palette pointsize 3 pointtype 7

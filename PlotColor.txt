@@ -1,0 +1,30 @@
+set terminal pngcairo size 1400,1048 enhanced font 'Verdana,10'
+set output '00.png'
+
+set palette model RGB defined ( 0 '#117400', 1 '#8B0000')
+
+set size square
+set style fill transparent solid 0.35
+
+# Set Line style: 12 & 13 are variable references
+set style line 12 lc rgb 'black' lt 2 lw 1.5
+set style line 13 lc rgb 'gray' lt 1 lw 1
+
+# Set major tics
+set xtics 17 left offset -.5,0
+set ytics 8 right offset 0,.35
+
+# Set Minor ticks numbers subdivide intervals defined by major.
+set mxtics 17
+set mytics 8
+
+# Set Gridlines can only be done after tics defined. ls: line style
+set grid xtics ytics mxtics mytics ls 12, ls 13
+
+
+unset key
+unset colorbox
+
+#poss pt for n-pos: pt: 3, 5,
+#for p-pos: current: 4 poss: 5,
+plot [0:100] [0:100] 'MisereSeq0.txt' using ($1 + .5):($2 + .5):( $3 == 0 ? 0 : 1 ) with points pt 5 ps 1.5 palette
